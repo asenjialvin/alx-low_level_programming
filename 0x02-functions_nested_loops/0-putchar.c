@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * main - Print "_putchar" followed by a new line.
  * Description: You are not allowed to include standard libraries.
@@ -6,15 +7,15 @@
  */
 int main(void)
 {
-	char _putchar[] = "_putchar";
-	int i = 0;
+    char text[] = "_putchar";
+    int i = 0;
 
-	while (_putchar[i] != '\0')
-	{
-		_putchar(_putchar[i]);
-		i++;
-	}
-	_putchar('\n');
+    while (text[i] != '\0')
+    {
+        putchar(text[i]);  // Use putchar function to print each character
+        i++;
+    }
+    putchar('\n');  // Use putchar to print a newline character
 
-	return (0);
+    return (0);
 }
