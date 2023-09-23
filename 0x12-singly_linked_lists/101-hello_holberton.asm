@@ -4,7 +4,6 @@ section .data
 section .text
     global main
     extern printf
-    global exit
 
 main:
     ; Call printf
