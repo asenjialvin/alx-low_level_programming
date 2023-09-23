@@ -1,6 +1,6 @@
 section .data
     hello db "Hello, Holberton",0
-    format db "%s\n",0
+    format db "Hello, Holberton",10,0  ; Include newline character (10)
 
 section .text
     global main
@@ -10,7 +10,6 @@ section .text
 main:
     ; Call printf
     mov rdi, format   ; Format string
-    mov rsi, hello    ; String to print
     xor rax, rax      ; Clear RAX (no floating-point arguments)
     call printf
 
