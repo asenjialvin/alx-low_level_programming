@@ -2,9 +2,6 @@
 #include <stdlib.h>
 #include "lists.h"
 
-size_t looped_listint_len(const listint_t *head);
-size_t print_listint_safe(const listint_t *head);
-
 /**
  * print_listint_safe - Prints a linked list of type listint_t.
  * @head: A pointer to the head of the linked list.
@@ -30,9 +27,10 @@ size_t print_listint_safe(const listint_t *head)
 		if (slow == fast)
 		{
 			printf("-> [%p] %d\n", (void *)slow, slow->n);
-			break;
+			exit(98);
 		}
 	}
 
 	return (count);
 }
+
