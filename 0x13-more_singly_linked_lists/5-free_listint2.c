@@ -1,21 +1,20 @@
 #include "lists.h"
 
 /**
- * free_listint2 - iterates through the free linked list
- * @head: pointer to NULL to indicate that the list is now empty.
- *
+ * free_listint2 - free a `listint_t` list
+ * @head: double pointer to head
  */
 void free_listint2(listint_t **head)
 {
-	listint_t *current = *head;
-	listint_t *next;
+	listint_t *hold;
 
-	while (current != NULL)
+	if (head == NULL)
+		return;
+
+	while (*head != NULL)
 	{
-		next = current->next;
-		free(current);
-		current = next;
+		hold = *head;
+		*head = (*head)->next;
+		free(hold);
 	}
-
-	*head = NULL;
 }
