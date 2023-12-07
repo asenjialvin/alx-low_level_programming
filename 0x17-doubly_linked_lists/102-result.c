@@ -1,39 +1,34 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <stdbool.h>
 
-int isPalindrome(int number)
-{
-	char str[7];
-	int length = strlen(str);
-	int i;
-
-	sprintf(str, "%d", number);
-	for (i = 0; i < length / 2; i++)
-	{
-		if (str[i] != str[length - i - 1])
-			return (0);
-	}
-	return (1);
+bool is_palindrome(int n) {
+  int original_n = n;
+  int reversed_n = 0;
+  while (n > 0) {
+    reversed_n = (reversed_n * 10) + (n % 10);
+    n /= 10;
+  }
+  return original_n == reversed_n;
 }
 
-int main()
-{
-	int largestPalindrome = 0;
-	int product, i, j;
+int main() {
+  int largest_palindrome = 0;
+  for (int i = 100; i < 1000; i++) {
+    for (int j = 100; j < 1000; j++) {
+      int product = i * j;
+      if (is_palindrome(product) && product > largest_palindrome) {
+        largest_palindrome = product;
+      }
+    }
+  }
 
-	for (i = 100; i <= 999; i++)
-	{
-		for (j = i; j <= 999; j++)
-		{
-			product = i * j;
-			if (isPalindrome(product) && product > largestPalindrome)
-				largestPalindrome = product;
-		}
-	}
-	FILE *file = fopen("102-result", "w");
-	fprintf(file, "%d", largestPalindrome);
-	fclose(file);
+  FILE *file = fopen("102-result", "w");
+  if (file) {
+    fprintf(file, "%d", largest_palindrome);
+    fclose(file);
+  } else {
+    printf("Error: Could not open file for writing.\n");
+  }
 
-	return (0);
+  return 0;
 }
